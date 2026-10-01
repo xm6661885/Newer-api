@@ -1,4 +1,4 @@
-# RelayGate
+# Newer-api
 
 [English](README.md) | **简体中文**
 
@@ -24,8 +24,8 @@
 要求：Python 3.10+。
 
 ```bash
-git clone https://github.com/XMWML/relaygate.git
-cd relaygate
+git clone https://github.com/XMWML/Newer-api.git
+cd Newer-api
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 .venv/bin/uvicorn app:app --host 127.0.0.1 --port 8000
@@ -104,11 +104,11 @@ curl http://127.0.0.1:8000/v1/chat/completions \
 
 示例文件位于 [`deploy/`](deploy)：
 
-- `relaygate.service`：systemd 单元（按实际用户和路径修改）：
+- `newer-api.service`：systemd 单元（按实际用户和路径修改）：
   ```bash
-  sudo cp deploy/relaygate.service /etc/systemd/system/
-  sudo systemctl enable --now relaygate
-  journalctl -u relaygate -f
+  sudo cp deploy/newer-api.service /etc/systemd/system/
+  sudo systemctl enable --now newer-api
+  journalctl -u newer-api -f
   ```
 - `nginx.conf`：TLS 反向代理，已关闭缓冲，这是 SSE 流式和大文件上传所必需的。
 

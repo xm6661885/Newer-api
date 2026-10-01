@@ -1,0 +1,18 @@
+[Unit]
+Description=Newer-api LLM API Gateway
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=newer-api
+Group=newer-api
+WorkingDirectory=/opt/newer-api
+ExecStart=/opt/newer-api/.venv/bin/uvicorn app:app --host 127.0.0.1 --port 8000 --proxy-headers --forwarded-allow-ips 127.0.0.1
+Restart=always
+RestartSec=3
+UMask=0077
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

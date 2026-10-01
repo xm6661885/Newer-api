@@ -1,4 +1,4 @@
-# RelayGate
+# Newer-api
 
 **English** | [简体中文](README.zh-CN.md)
 
@@ -24,8 +24,8 @@ Built with FastAPI + SQLite. No build step, no external services, and a plain-JS
 Requirements: Python 3.10+.
 
 ```bash
-git clone https://github.com/XMWML/relaygate.git
-cd relaygate
+git clone https://github.com/XMWML/Newer-api.git
+cd Newer-api
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 .venv/bin/uvicorn app:app --host 127.0.0.1 --port 8000
@@ -106,11 +106,11 @@ The admin *Site settings* page lets you change the site name, currency name (def
 
 Example files are in [`deploy/`](deploy):
 
-- `relaygate.service` — systemd unit (adjust user and paths):
+- `newer-api.service` — systemd unit (adjust user and paths):
   ```bash
-  sudo cp deploy/relaygate.service /etc/systemd/system/
-  sudo systemctl enable --now relaygate
-  journalctl -u relaygate -f
+  sudo cp deploy/newer-api.service /etc/systemd/system/
+  sudo systemctl enable --now newer-api
+  journalctl -u newer-api -f
   ```
 - `nginx.conf` — TLS reverse proxy with buffering disabled, required for SSE streaming and large uploads.
 
