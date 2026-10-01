@@ -1,0 +1,18 @@
+[Unit]
+Description=RelayGate LLM API Gateway
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=relaygate
+Group=relaygate
+WorkingDirectory=/opt/relaygate
+ExecStart=/opt/relaygate/.venv/bin/uvicorn app:app --host 127.0.0.1 --port 8000 --proxy-headers --forwarded-allow-ips 127.0.0.1
+Restart=always
+RestartSec=3
+UMask=0077
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
